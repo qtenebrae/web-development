@@ -9,7 +9,6 @@ export class ExchangeratesService {
 			`${process.env.EXCHANGE_RATES_URL}/api/historical/${date}.json
 			?app_id=${process.env.EXCHANGE_RATES_APP_ID}&base=${base}&symbols=${symbols.join(',')}`,
 		);
-		console.log(res);
 		return {
 			base: res.data.base,
 			rates: res.data.rates,
