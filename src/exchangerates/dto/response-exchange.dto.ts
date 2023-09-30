@@ -1,6 +1,6 @@
 export default class ResponseExchangeDTO {
 	base: string;
-	rate: {
+	rates: {
 		[key: string]: string;
 	};
 }

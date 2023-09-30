@@ -7,6 +7,6 @@ export class ExchangeratesController {
 
 	@Get('getExchange')
 	async getExchange(): Promise<any> {
-		return this.exchangeratesService.getExchange('USD', ['AUD', 'EUR', 'RUB']);
+		return this.exchangeratesService.getExchange('USD', ['AUD', 'EUR', 'RUB'], '2023-09-23');
 	}
 }
