@@ -5,5 +5,6 @@ import { GiphyService } from './giphy.service';
 @Module({
 	controllers: [GiphyController],
 	providers: [GiphyService],
+	exports: [GiphyService],
 })
 export class GiphyModule {}
