@@ -1,7 +1,8 @@
-import { Controller, Get, Inject } from '@nestjs/common';
+import { Controller, Get, Inject, Req } from '@nestjs/common';
 import { ExchangeratesService } from '../exchangerates/exchangerates.service';
 import { GiphyService } from '../giphy/giphy.service';
 import { HelperService } from '../helper/helper.service';
+import { GiphyServiceResponse } from '../giphy/dto/response-giphy.dto';
 
 function getRandomInt(min: number, max: number): number {
   min = Math.ceil(min);
@@ -19,19 +20,18 @@ export class CurrencyController {
   ) {}
 
   @Get('getRates')
-  async getRates(): Promise<any> {
-    const target = ['RUB'];
+  async getRates(@Req() request:{query:{base:string, symbol:string}}): Promise<GiphyServiceResponse> {
     const current = await this.exchangeratesService.getExchange(
-      'USD',
-      target,
+      request.query.base,
+      [request.query.symbol],
       this.helperService.currentDate()
     );
     const previous = await this.exchangeratesService.getExchange(
-      'USD',
-      target,
+      request.query.base,
+      [request.query.symbol],
       this.helperService.previousDate()
     );
-    if (current.rates[target[0]] < previous.rates[target[0]]) {
+    if (current.rates[request.query.symbol] < previous.rates[request.query.symbol]) {
       const gif = await this.giphyService.getGiphyByTag('happy');
       if (!(gif instanceof Error)) {
         return gif[getRandomInt(0, gif.length - 1)];

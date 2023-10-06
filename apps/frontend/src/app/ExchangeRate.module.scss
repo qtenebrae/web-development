@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+}
+.container div:nth-of-type(1) {
+  border-right: 4px solid black;
+}
+.container:hover .td {
+  color: cyan;
+  text-shadow: 0 0 10px cyan;
+}
+.container:hover div {
+  border-color: rgb(175, 174, 174);
+}
+.td {
+  flex-grow: 1;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(175, 174, 174);
+  cursor: default;
+  transition: all 500ms ease-out;
+}

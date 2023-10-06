@@ -5,7 +5,7 @@ import CurrencyTable from './CurrencyTable';
 
 export function App() {
   return (
-    <div>
+    <div className={styles.App}>
       <CurrencyTable />
     </div>
   );
