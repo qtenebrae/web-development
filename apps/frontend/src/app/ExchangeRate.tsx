@@ -1,15 +1,16 @@
 import axios from 'axios';
 import styles from './ExchangeRate.module.scss';
-import { useState } from 'react';
 
 function ExchangeRate({
   base,
   symbol,
   setUrl,
+  setActive,
 }: {
   base: string;
   symbol: string;
   setUrl: (url: string) => void;
+  setActive: (value: boolean) => void;
 }) {
   const doucleCLickHandler = () => {
     axios
@@ -18,6 +19,10 @@ function ExchangeRate({
       })
       .then((value) => {
         setUrl(value.data.url);
+        setActive(true);
+      })
+      .catch(() => {
+        alert('Данные валюты сломанные и не откликаются на API сайта');
       });
   };
   return (
