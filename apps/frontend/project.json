@@ -15,7 +15,7 @@
         "baseHref": "/",
         "main": "apps/frontend/src/main.tsx",
         "tsConfig": "apps/frontend/tsconfig.app.json",
-        "assets": ["apps/frontend/src/favicon.ico", "apps/frontend/src/assets"],
+        "assets": ["apps/frontend/src/assets"],
         "styles": ["apps/frontend/src/styles.scss"],
         "scripts": [],
         "isolatedConfig": true,
