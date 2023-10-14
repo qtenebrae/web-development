@@ -1,6 +1,6 @@
 export class ResponseGiphyDTO {
 	title: string;
-	embed_url: string;
+	images: { original: { url: string } };
 }
 
 export class ResponseGiphyAPI {

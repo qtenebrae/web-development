@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { GiphyModule } from './giphy/giphy.module';
 import { ExchangeratesModule } from './exchangerates/exchangerates.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -22,7 +20,5 @@ import { HelperModule } from './helper/helper.module';
 		CurrencyModule,
 		HelperModule,
 	],
-	controllers: [AppController],
-	providers: [AppService],
 })
 export class AppModule {}
