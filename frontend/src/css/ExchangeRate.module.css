@@ -1,0 +1,21 @@
+.container {
+	display: flex;
+}
+.container:hover .td {
+	color: cyan;
+	text-shadow: 0 0 10px cyan;
+}
+.container:hover div {
+	background-color: rgb(146, 146, 146);
+}
+.td {
+	flex-grow: 1;
+	font-size: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(175, 174, 174);
+	cursor: default;
+	transition: all 500ms ease-out;
+	user-select: none;
+}
