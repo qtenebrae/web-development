@@ -4,7 +4,7 @@ import { GiphyService } from 'src/giphy/giphy.service';
 import { HelperService } from 'src/helper/helper.service';
 import { CurrencyResponseDTO } from './dto/response-currency.dto';
 import { RequestBodyDTO } from './dto/request-body.dto';
-import { ApiOperation, ApiProperty, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 function getRandomInt(min: number, max: number): number {
 	min = Math.ceil(min);
@@ -28,7 +28,6 @@ export class CurrencyController {
 	@ApiOperation({ summary: 'Get gif' })
 	@ApiResponse({ status: 200, description: 'Return gif' })
 	async getRates(@Query() query: RequestBodyDTO): Promise<CurrencyResponseDTO> {
-		console.log(query);
 		const current = await this.exchangeratesService.getExchange(
 			query.from,
 			[query.to],
@@ -40,12 +39,12 @@ export class CurrencyController {
 			this.helperService.previousDate(),
 		);
 		if (current.rates[query.to] < previous.rates[query.to]) {
-			const gif = await this.giphyService.getGiphyByTag('happy');
+			const gif = await this.giphyService.getGiphyByTag('rich');
 			if (!(gif instanceof Error)) {
 				return gif[getRandomInt(0, gif.length - 1)];
 			}
 		} else {
-			const gif = await this.giphyService.getGiphyByTag('sad');
+			const gif = await this.giphyService.getGiphyByTag('broke');
 			if (!(gif instanceof Error)) {
 				return gif[getRandomInt(0, gif.length - 1)];
 			}
