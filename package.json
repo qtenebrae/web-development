@@ -8,7 +8,9 @@
     "get:dep": "cd backend && npm i && cd ../frontend && npm i",
     "build": "cd backend && npm run build && cd ../frontend && npm run build",
     "backend": "cd backend && npm run start:prod",
-    "frontend": " cd frontend && npx serve -s build -p 5005"
+    "frontend": " cd frontend && npx serve -s build -p 5005",
+    "backend:unit_tests": "cd backend && npm run test",
+    "backend:e2e_tests": "cd backend && npm run test:e2e"
   },
   "author": "",
   "license": "ISC"
