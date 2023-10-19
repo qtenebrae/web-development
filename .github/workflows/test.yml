@@ -24,12 +24,18 @@ jobs:
       - name: Install dependencies
         run: npm run get:dep
 
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Run unit tests
         run: npm run backend:unit_tests
         
       - name: Run e2e tests
         run: npm run backend:e2e_tests
+
+  # test:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run unit tests
+  #       run: npm run backend:unit_tests
+        
+  #     - name: Run e2e tests
+  #       run: npm run backend:e2e_tests
