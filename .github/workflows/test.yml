@@ -5,6 +5,7 @@ on:
     branches: [ CI ]
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -15,13 +16,20 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18.x'
-
-      - uses: isbang/compose-action@v1.5.1
+      - name: Docker compose mongoDB
+        uses: isbang/compose-action@v1.5.1
         with:
           compose-file: "./backend/docker-compose.yml"
 
       - name: Install dependencies
         run: npm run get:dep
 
-      - name: Run tests
-        run: cd backend && npm run test && npm run test:e2e
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run unit tests
+        run: npm run backend:unit_tests
+        
+      - name: Run e2e tests
+        run: npm run backend:e2e_tests
