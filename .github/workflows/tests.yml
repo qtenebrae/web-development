@@ -1,0 +1,58 @@
+name: NestJS Tests
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+          
+      - name: Docker compose mongoDB
+        uses: isbang/compose-action@v1.5.1
+        with:
+          compose-file: "./backend/docker-compose.yml"
+
+      - name: Install dependencies
+        run: npm run get:dep
+
+      - name: Build
+        run: npm run build
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+          
+      - name: Docker compose mongoDB
+        uses: isbang/compose-action@v1.5.1
+        with:
+          compose-file: "./backend/docker-compose.yml"
+
+      - name: Install dependencies
+        run: npm run get:dep
+
+      - name: Build
+        run: npm run build
+
+      - name: Run unit tests
+        run: npm run backend:unit_tests
+        
+      - name: Run e2e tests
+        run: npm run backend:e2e_tests
