@@ -1,7 +1,7 @@
-# tkinter rectangle-collision
+# exchange-rates
 
-[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/qtenebrae/web-development/tests.yml)](https://github.com/qtenebrae/web-development/actions)
-[![GitHub repo size](https://img.shields.io/github/repo-size/qtenebrae/web-developmen)](https://github.com/qtenebrae/web-developmen)
+[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/qtenebrae/web-development/tests.yml?label=build%20and%20tests)](https://github.com/qtenebrae/web-development/actions)
+[![GitHub repo size](https://img.shields.io/github/repo-size/qtenebrae/web-development)](https://github.com/qtenebrae/web-development)
 
 ## Content
 
@@ -9,11 +9,11 @@
 
 - [Requirements](#requirements)
 
-- [Main scripts](#main-scripts)
+- [Custom scripts](#custom-scripts)
 
 - [How to install](#how-to-install)
 
-## Previews
+## Preview
 
 The application displays gifs depending on the exchange rate of the selected currencies
 
